@@ -23,20 +23,20 @@ if( isset( $_POST['subject'] ) ) {
 }
 
 if( trim( $name ) == '') {
-    $errors['name'] = true;	
-} 
+    $errors['name'] = true;
+}
 
 if( trim( $email ) == '' ) {
-    $errors['email'] = true;	
-} 
+    $errors['email'] = true;
+}
 
 if( !isEmail( $email ) ) {
-    $errors['email'] = true;	
-} 
+    $errors['email'] = true;
+}
 
 if( trim( $message ) == '' ) {
-    $errors['message'] = true;	
-} 
+    $errors['message'] = true;
+}
 
 if( get_magic_quotes_gpc() ) {
     $message = stripslashes( $message );
@@ -48,14 +48,14 @@ if ( !empty( $errors ) ) {
     // if there are items in our errors array, return those errors
     $data['success'] = false;
     $data['errors']  = $errors;
-    
+
 } else {
 
     // Configuration option.
     // Enter the email address that you want to emails to be sent to.
     // Example $your_email_address = "joe.doe@yourdomain.com";
-    
-    $your_email_address = "info@caliberthemes.com";   // Your Email Address
+
+    $your_email_address = "valeriadavila553@gmail.com";   // Your Email Address
 
 
     // Configuration option.
@@ -91,7 +91,7 @@ if ( !empty( $errors ) ) {
     if( mail( $your_email_address, $e_subject, $msg, $headers ) ) {
 
         //Email has sent successfully.
-        $data['success'] = true;                           
+        $data['success'] = true;
 
     } else {
         $data['success'] = false;
@@ -100,6 +100,6 @@ if ( !empty( $errors ) ) {
     }
 
 }
-        
+
 // return all our data to an AJAX call
 echo json_encode( $data );
