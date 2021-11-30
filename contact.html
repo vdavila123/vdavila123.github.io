@@ -87,7 +87,7 @@
                                                                 </div>
                                                                 <div class="contact-form-fields">
                                                                     <span class="kraftcf-form-control-wrap email">
-                                                                        <input type="email" name="email" value="" size="40" class="kraftcf-form-control kraftcf-text kraftcf-email kraftcf-validates-as-required kraftcf-validates-as-email" aria-required="true" aria-invalid="false" placeholder="Email*">
+                                                                        <input type="email" id="email-required" name="email" value="" size="40" class="kraftcf-form-control kraftcf-text kraftcf-email kraftcf-validates-as-required kraftcf-validates-as-email" aria-required="true" aria-invalid="false" placeholder="Email*">
                                                                         <span role="alert" class="kraftcf-not-valid-tip">The field is required.</span>
                                                                         <span role="alert" class="kraftcf-not-valid-tip">The e-mail address entered is invalid.</span>
                                                                     </span>
@@ -100,14 +100,36 @@
                                                             </div>
                                                             <p>
                                                                 <span class="kraftcf-form-control-wrap message">
-                                                                    <textarea name="message" cols="40" rows="10" class="kraftcf-form-control kraftcf-textarea kraftcf-validates-as-required" aria-required="true" aria-invalid="false" placeholder="Message*"></textarea>
+                                                                    <textarea name="message" id="message-required" cols="40" rows="10" class="kraftcf-form-control kraftcf-textarea kraftcf-validates-as-required" aria-required="true" aria-invalid="false" placeholder="Message*"></textarea>
                                                                     <span role="alert" class="kraftcf-not-valid-tip">The field is required.</span>
                                                                 </span>
                                                             </p>
 
                                                             <p>
-                                                                <input type="submit" value="SEND MESSAGE" class="kraftcf-form-control kraftcf-submit">
+                                                                <button
+                                                                type="submit"
+                                                                value="SEND MESSAGE"
+                                                                class="kraftcf-form-control kraftcf-submit"
+                                                                onclick="sendEmail()"
+                                                                id="submitbutton"
+                                                                >
+                                                                Submit
+                                                                </button>
                                                             </p>
+                                                            <script>
+                                                                function sendEmail() {
+                                                                    let button =
+                                                                        document.getElementById("submitbutton");
+                                                                    let email = document.getElementById("email-required").value;
+                                                                    let message = document.getElementById("message-required").value;
+                                                                    console.log('contact.html 124 | email message', email, message);
+                                                                    
+                                                                    if(email && message){
+                                                                        button.innerHTML = "Message sent!";
+                                                                    }
+                                                                    
+                                                                }
+                                                            </script>
                                                         </div>
                                                         <div class="kraftcf-response-output kraftcf-display-none kraftcf-validation-errors" role="alert">One or more fields have an error. Please check and try again.</div>
                                                         <div class="kraftcf-response-output kraftcf-display-none kraftcf-mail-sent-ok" role="alert">Thank you for your message. It has been sent.</div>
